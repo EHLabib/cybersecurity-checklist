@@ -1,0 +1,204 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Cybersecurity Checklist — Beginner Friendly</title>
+<style>
+  :root{--bg:#f7fafc;--card:#ffffff;--accent:#0f62fe;--muted:#6b7280}
+  body{font-family:Inter,system-ui,Segoe UI,Roboto,'Helvetica Neue',Arial;margin:0;background:var(--bg);color:#111}
+  .wrap{max-width:920px;margin:20px auto;padding:16px}
+  header{display:flex;align-items:center;gap:12px}
+  h1{margin:0;font-size:20px}
+  .card{background:var(--card);border-radius:12px;padding:16px;box-shadow:0 6px 18px rgba(15,23,42,0.06)}
+  .section{margin-top:14px}
+  .section h3{margin:0 0 8px 0;font-size:16px;color:var(--accent)}
+  ul{list-style:none;padding:0;margin:0}
+  li{display:flex;align-items:center;gap:12px;padding:10px;border-radius:8px}
+  li:hover{background:#f3f4f6}
+  label{cursor:pointer;display:flex;gap:10px;align-items:center;width:100%}
+  .muted{color:var(--muted);font-size:13px}
+  .scoreboard{display:flex;align-items:center;justify-content:space-between;gap:12px}
+  .progress{height:12px;background:#e6eefc;border-radius:999px;overflow:hidden;flex:1;margin:0 12px}
+  .progress > i{display:block;height:100%;background:linear-gradient(90deg,var(--accent),#6fb3ff);width:0%}
+  .bottom{display:flex;gap:10px;align-items:center;margin-top:16px;flex-wrap:wrap}
+  button{background:var(--accent);color:white;border:0;padding:8px 12px;border-radius:8px;cursor:pointer}
+  button.ghost{background:#eef2ff;color:var(--accent)}
+  button.secondary{background:#f3f4f6;color:var(--accent)}
+  .small{font-size:13px;padding:6px 10px}
+  #feedbackCanvas{margin-top:16px;border:1px solid #ddd;display:none;border-radius:12px;}
+  footer{margin-top:12px;color:var(--muted);font-size:13px}
+  @media (max-width:640px){.scoreboard{flex-direction:column;align-items:flex-start}.progress{width:100%;margin:8px 0}}
+</style>
+</head>
+<body>
+<div class="wrap">
+  <header>
+    <div style="width:56px;height:56px;border-radius:10px;background:linear-gradient(180deg,#eef6ff,#e6f0ff);display:flex;align-items:center;justify-content:center;font-weight:700;color:var(--accent)">CS</div>
+    <div>
+      <h1>Cybersecurity Checklist — Beginner Friendly</h1>
+      <div class="muted">Check items as you learn them and see your hacker-level progress!</div>
+    </div>
+  </header>
+
+  <div class="card">
+    <div class="scoreboard">
+      <div style="display:flex;flex-direction:column">
+        <div class="muted">Score</div>
+        <div style="font-size:20px;font-weight:700" id="scoreDisplay">0 / 100</div>
+      </div>
+      <div class="progress" aria-hidden="true"><i id="progBar" style="width:0%"></i></div>
+      <div style="text-align:right">
+        <div class="muted">Completion</div>
+        <div id="percentDisplay" style="font-weight:700;">0%</div>
+      </div>
+    </div>
+
+    <!-- Sections with simplified beginner names -->
+    <div class="section">
+      <h3>Cyber Basics (6)</h3>
+      <ul>
+        <li><label><input type="checkbox"> I know what cybersecurity means</label></li>
+        <li><label><input type="checkbox"> I understand the CIA triad (Confidentiality, Integrity, Availability)</label></li>
+        <li><label><input type="checkbox"> I can tell the difference between threat, vulnerability, and risk</label></li>
+        <li><label><input type="checkbox"> I can recognize phishing, malware, and ransomware</label></li>
+        <li><label><input type="checkbox"> I practice safe browsing and email habits</label></li>
+        <li><label><input type="checkbox"> I know how to make strong passwords</label></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Networking & Operating Systems (6)</h3>
+      <ul>
+        <li><label><input type="checkbox"> I understand what IP addresses and ports are</label></li>
+        <li><label><input type="checkbox"> I can use ping, traceroute, and netstat</label></li>
+        <li><label><input type="checkbox"> I know basic Windows security settings (UAC, updates)</label></li>
+        <li><label><input type="checkbox"> I can use Linux terminal and set permissions</label></li>
+        <li><label><input type="checkbox"> I know what a firewall does</label></li>
+        <li><label><input type="checkbox"> I understand why networks are divided into segments</label></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Tools & Scanning (6)</h3>
+      <ul>
+        <li><label><input type="checkbox"> I have tried a basic Nmap scan</label></li>
+        <li><label><input type="checkbox"> I know how to capture packets in Wireshark</label></li>
+        <li><label><input type="checkbox"> I’ve used Burp Suite or any web proxy</label></li>
+        <li><label><input type="checkbox"> I have an account on TryHackMe or HackTheBox</label></li>
+        <li><label><input type="checkbox"> I use antivirus and keep it updated</label></li>
+        <li><label><input type="checkbox"> I know what vulnerability scanners do</label></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>Web Security & Safe Development (6)</h3>
+      <ul>
+        <li><label><input type="checkbox"> I understand that unsafe HTML/JS can be risky</label></li>
+        <li><label><input type="checkbox"> I’ve heard of OWASP Top 10 (common web attacks)</label></li>
+        <li><label><input type="checkbox"> I know what SQL Injection and XSS mean</label></li>
+        <li><label><input type="checkbox"> I use a password manager or strong passwords</label></li>
+        <li><label><input type="checkbox"> I have turned on Two-Factor Authentication (2FA)</label></li>
+        <li><label><input type="checkbox"> I know HTTPS and SSL/TLS help protect websites</label></li>
+      </ul>
+    </div>
+
+    <div class="section">
+      <h3>OSINT & Next Steps (6)</h3>
+      <ul>
+        <li><label><input type="checkbox"> I can search information safely online (OSINT basics)</label></li>
+        <li><label><input type="checkbox"> I built or plan to build a small home lab</label></li>
+        <li><label><input type="checkbox"> I joined a cybersecurity or tech community</label></li>
+        <li><label><input type="checkbox"> I’ve tried a beginner Capture The Flag (CTF)</label></li>
+        <li><label><input type="checkbox"> I have a learning or certification goal (like CompTIA Security+)</label></li>
+        <li><label><input type="checkbox"> I keep notes or document my learning progress</label></li>
+      </ul>
+    </div>
+
+    <div class="bottom">
+      <button id="resetBtn" class="small ghost">Reset</button>
+      <button id="doneBtn" class="small secondary">Mark as Done</button>
+      <div style="margin-left:auto;color:var(--muted);font-size:13px">30 items — 3.33 points each</div>
+    </div>
+
+    <canvas id="feedbackCanvas" width="400" height="200"></canvas>
+
+    <footer>Tip: Check items as you learn. You’ll see your progress and hacker rank below!</footer>
+  </div>
+</div>
+
+<script>
+const checkboxes = Array.from(document.querySelectorAll('input[type=checkbox]'));
+const scoreEl = document.getElementById('scoreDisplay');
+const percentEl = document.getElementById('percentDisplay');
+const progBar = document.getElementById('progBar');
+const resetBtn = document.getElementById('resetBtn');
+const doneBtn = document.getElementById('doneBtn');
+const feedbackCanvas = document.getElementById('feedbackCanvas');
+
+const totalPoints = 100;
+const pointsPerItem = totalPoints / checkboxes.length;
+
+function updateScore() {
+  let score = 0;
+  checkboxes.forEach(cb => { if(cb.checked) score += pointsPerItem; });
+  const roundedScore = Math.round(score);
+  const percent = Math.round((score / totalPoints) * 100);
+  scoreEl.textContent = `${roundedScore} / ${totalPoints}`;
+  percentEl.textContent = `${percent}%`;
+  progBar.style.width = percent + '%';
+
+  if(percent > 0) {
+    showFeedbackImage(roundedScore);
+  } else {
+    feedbackCanvas.style.display = 'none';
+  }
+}
+
+function showFeedbackImage(score) {
+  feedbackCanvas.style.display = 'block';
+  const ctx = feedbackCanvas.getContext('2d');
+  ctx.clearRect(0,0,feedbackCanvas.width,feedbackCanvas.height);
+  ctx.fillStyle = '#eef6ff';
+  ctx.fillRect(0,0,feedbackCanvas.width,feedbackCanvas.height);
+
+  let message = '';
+  let emoji = '';
+
+  if(score >= 90){message="💀 Red Team Operative"; emoji='👨‍💻';}
+  else if(score >= 80){message="Elite Hacker in Progress"; emoji='🧠';}
+  else if(score >= 70){message="Cyber Defender"; emoji='🛡️';}
+  else if(score >= 60){message="Hacker Apprentice"; emoji='🕵️‍♂️';}
+  else if(score >= 50){message="Script Kiddie"; emoji='💻';}
+  else if(score >= 40){message="Network Explorer"; emoji='🌐';}
+  else if(score >= 30){message="Terminal Learner"; emoji='⌨️';}
+  else if(score >= 20){message="Exploring the Matrix"; emoji='🪐';}
+  else if(score >= 10){message="New Recruit"; emoji='⚡';}
+  else{message="Welcome to Hacker World"; emoji='🥷';}
+
+  ctx.fillStyle = '#0f62fe';
+  ctx.font = '20px Arial';
+  ctx.textAlign = 'center';
+  ctx.fillText(message, feedbackCanvas.width/2, 80);
+  ctx.font = '50px Arial';
+  ctx.fillText(emoji, feedbackCanvas.width/2, 150);
+}
+
+checkboxes.forEach(cb => cb.addEventListener('change', updateScore));
+
+resetBtn.addEventListener('click', ()=>{
+  if(!confirm('Clear all progress?')) return;
+  checkboxes.forEach(cb=>cb.checked=false);
+  updateScore();
+});
+
+doneBtn.addEventListener('click', ()=>{
+  const score = Math.round(checkboxes.filter(cb=>cb.checked).length * pointsPerItem);
+  showFeedbackImage(score);
+});
+
+// Initial update
+updateScore();
+</script>
+</body>
+</html>
